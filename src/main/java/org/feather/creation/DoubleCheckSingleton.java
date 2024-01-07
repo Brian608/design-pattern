@@ -18,7 +18,12 @@ public class DoubleCheckSingleton {
     private static volatile DoubleCheckSingleton instance;
 
     //2：为了避免别人随意创建，我们需要私有化构造器
-    private DoubleCheckSingleton(){};
+    private DoubleCheckSingleton(){
+        //升级版本--->不要让人使用反射创建
+        if (instance!=null){
+            throw new RuntimeException("该对象是单例的，无法创建多个");
+        }
+    };
 
     //3：暴露一个方法，用来获取实例
     //第一次创建 需要双锁，一旦创建好了就不需要锁
@@ -32,6 +37,10 @@ public class DoubleCheckSingleton {
             }
         }
         return  instance;
+    }
+
+    public  Object readResolve(){
+        return instance;
     }
 
 

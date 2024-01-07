@@ -1,6 +1,10 @@
 package org.feather.creation;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * @projectName: design-pattern
@@ -21,5 +25,22 @@ public class SingletonTest {
        System.out.println("LazySingleton.getInstance()==LazySingleton.getInstance() -> " + (LazySingleton.getInstance() == LazySingleton.getInstance()));
 
        System.out.println("DoubleCheckSingleton.getInstance()==DoubleCheckSingleton.getInstance() -> " +( DoubleCheckSingleton.getInstance() == DoubleCheckSingleton.getInstance()));
+   }
+   /**
+    * description: 通过反射破坏单例
+    * param []
+    * return void
+    * author: feather
+    * since: 07-Jan-24 9:51 AM
+    **/
+   @Test
+   public  void testReflect() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+      Class<DoubleCheckSingleton> doubleCheckSingletonClass = DoubleCheckSingleton.class;
+      Constructor<DoubleCheckSingleton> constructor = doubleCheckSingletonClass.getDeclaredConstructor();
+      constructor.setAccessible(true);
+
+      boolean flag=DoubleCheckSingleton.getInstance()==constructor.newInstance();
+      System.out.println("flag->{}"+flag);
+
    }
 }
