@@ -1,4 +1,4 @@
-package org.feather.creation;
+package org.feather.designpattern.creation;
 
 /**
  * @projectName: design-pattern

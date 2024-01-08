@@ -1,4 +1,4 @@
-package org.feather.creation;
+package org.feather.designpattern.creation;
 
 import java.util.concurrent.atomic.AtomicLong;
 

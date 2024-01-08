@@ -1,6 +1,8 @@
 package org.feather.creation;
 
-import lombok.extern.slf4j.Slf4j;
+import org.feather.designpattern.creation.DoubleCheckSingleton;
+import org.feather.designpattern.creation.EagerSingleton;
+import org.feather.designpattern.creation.LazySingleton;
 import org.junit.Test;
 
 import java.lang.reflect.Constructor;
