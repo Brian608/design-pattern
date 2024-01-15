@@ -5,8 +5,11 @@ import org.feather.designpattern.creation.EagerSingleton;
 import org.feather.designpattern.creation.LazySingleton;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.Charset;
 
 /**
  * @projectName: design-pattern
@@ -44,5 +47,19 @@ public class SingletonTest {
       boolean flag=DoubleCheckSingleton.getInstance()==constructor.newInstance();
       System.out.println("flag->{}"+flag);
 
+   }
+
+   @Test
+   public  void testRuntime() throws IOException {
+      Runtime runtime=Runtime.getRuntime();
+      Process exec=runtime.exec("ping 127.0.0.1");
+      InputStream inputStream=exec.getInputStream();
+      byte [] buffer=new byte[1024];
+      int len;
+      while ((len=inputStream.read(buffer))>0){
+         System.out.println(new String(buffer,0,len, Charset.forName("GBK")));
+      }
+      long maxMemory=runtime.maxMemory();
+      System.out.println("maxMemory----:"+maxMemory);
    }
 }
