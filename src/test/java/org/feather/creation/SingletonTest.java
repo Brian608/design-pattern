@@ -1,9 +1,12 @@
 package org.feather.creation;
 
+import lombok.extern.slf4j.Slf4j;
 import org.feather.designpattern.creation.DoubleCheckSingleton;
 import org.feather.designpattern.creation.EagerSingleton;
 import org.feather.designpattern.creation.LazySingleton;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +23,7 @@ import java.nio.charset.Charset;
  * @since: 06-Jan-24 9:45 PM
  * @version: 1.0
  */
+@Slf4j
 public class SingletonTest {
 
    @Test
@@ -45,8 +49,7 @@ public class SingletonTest {
       constructor.setAccessible(true);
 
       boolean flag=DoubleCheckSingleton.getInstance()==constructor.newInstance();
-      System.out.println("flag->{}"+flag);
-
+      log.info("flag->{}",flag);
    }
 
    @Test
@@ -60,6 +63,15 @@ public class SingletonTest {
          System.out.println(new String(buffer,0,len, Charset.forName("GBK")));
       }
       long maxMemory=runtime.maxMemory();
-      System.out.println("maxMemory----:"+maxMemory);
+      log.info("maxMemory---{}",maxMemory);
+   }
+
+   @Test
+   public  void  testLog(){
+      Logger featherLog1 = LoggerFactory.getLogger("feather");
+      Logger featherLog2 = LoggerFactory.getLogger("feather");
+      Logger featherLog666 = LoggerFactory.getLogger("feather666");
+      log.info("featherLog1==featherLog2->{}",featherLog1==featherLog2);
+      log.info("featherLog1==featherLog666->{}",featherLog1==featherLog666);
    }
 }
