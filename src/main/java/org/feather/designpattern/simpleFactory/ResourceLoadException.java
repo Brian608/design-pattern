@@ -1,4 +1,4 @@
-package org.feather.simpleFactory;
+package org.feather.designpattern.simpleFactory;
 
 /**
  * @projectName: design-pattern

@@ -1,4 +1,4 @@
-package org.feather.simpleFactory;
+package org.feather.designpattern.simpleFactory;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
