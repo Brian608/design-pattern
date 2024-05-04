@@ -1,5 +1,6 @@
-package org.feather.designpattern.factoryMethod.resourceFactory;
+package org.feather.designpattern.factoryMethod;
 
+import org.feather.designpattern.factoryMethod.resourceFactory.IResourceLoader;
 import org.feather.designpattern.factoryMethod.resourceFactory.impl.ClasspathResourceLoader;
 import org.feather.designpattern.factoryMethod.resourceFactory.impl.DefaultResourceLoader;
 import org.feather.designpattern.factoryMethod.resourceFactory.impl.FileResourceLoader;
@@ -27,7 +28,7 @@ public class ResourceLoader {
 
 //    private IResourceLoader resourceLoader;
 
-    private static Map<String,IResourceLoader> resourceLoaderCache=new HashMap<>();
+    private static Map<String, IResourceLoader> resourceLoaderCache=new HashMap<>();
     //版本二
 //    static {
 //        resourceLoaderCache.put("http",new HttpResourceLoader());
